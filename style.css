@@ -758,7 +758,7 @@ form#weatherForm button:hover {
   }
   
   .weather-card {
-    width: 100%;
+    width: 90%;
     margin: 0 auto 20px;
   }
   
@@ -775,7 +775,7 @@ form#weatherForm button:hover {
   
   .search-container,
   .weather-card {
-    width: 100%;
+    width: 90%;
   }
   
   .weather-main {
@@ -829,7 +829,7 @@ form#weatherForm button:hover {
 
 /* Add these new styles for improved weather display */
 .weather-container {
-  max-width: 90%;
+  max-width: 100%;
   margin: 0 auto;
   padding: 20px;
   overflow: hidden;
