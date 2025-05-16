@@ -721,7 +721,7 @@ form#weatherForm button:hover {
   }
   
   .search-container {
-    width: 90%;
+    width: 100%;
     margin: 0 auto;
   }
   
@@ -758,7 +758,7 @@ form#weatherForm button:hover {
   }
   
   .weather-card {
-    width: 90%;
+    width: 100%;
     margin: 0 auto 20px;
   }
   
@@ -775,7 +775,7 @@ form#weatherForm button:hover {
   
   .search-container,
   .weather-card {
-    width: 95%;
+    width: 100%;
   }
   
   .weather-main {

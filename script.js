@@ -26,6 +26,8 @@ const elements = {
   recentSearchesList: document.getElementById("recentSearches"),
   resetButton: document.getElementById("resetDashboard"),
   detailsBtn: null, // Will be set dynamically
+  toggleRecent: document.getElementById('toggleRecent'),
+  recentSearchesContainer: document.getElementById('recentSearchesContainer'),
 };
 
 // Initialize the application
@@ -58,7 +60,27 @@ function initApp() {
   
   // Add reset button functionality
   elements.resetButton.addEventListener("click", resetDashboard);
+  
+  // Add hamburger menu toggle
+  elements.toggleRecent.addEventListener('click', () => {
+    elements.recentSearchesContainer.classList.toggle('active');
+  });
+  
+  // Close recent searches when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!elements.recentSearchesContainer.contains(e.target) && 
+        !elements.toggleRecent.contains(e.target)) {
+      elements.recentSearchesContainer.classList.remove('active');
+    }
+  });
 }
+
+// Add resize handler
+window.addEventListener('resize', () => {
+  if (window.innerWidth > 900) {
+    elements.recentSearchesContainer.classList.remove('active');
+  }
+});
 
 // Handle form submission
 function handleFormSubmit(e) {
