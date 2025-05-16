@@ -768,6 +768,56 @@ form#weatherForm button:hover {
   }
 }
 
+@media (max-width: 768px) {
+  .weather-header {
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .primary-info {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+  }
+  
+  .weather-stats-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    padding: 10px 0;
+  }
+  
+  .stat-card {
+    padding: 15px;
+    margin: 0;
+  }
+  
+  .forecast-items {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+  
+  .temp-value {
+    font-size: 56px;
+  }
+  
+  .weather-card {
+    width: 100%;
+    margin: 0 0 15px 0;
+    padding: 15px;
+    border-radius: var(--radius-medium);
+  }
+  
+  .main-content {
+    padding: 0;
+  }
+  
+  .sun-info {
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+  }
+}
+
 @media (max-width: 600px) {
   .sidebar {
     padding: 10px;
@@ -803,6 +853,30 @@ form#weatherForm button:hover {
   }
 }
 
+@media (max-width: 480px) {
+  .sidebar,
+  .main-content,
+  .weather-card,
+  .forecast-section {
+    padding: 10px;
+  }
+
+  .weather-container {
+    width: 100%;
+  }
+
+  .weather-card {
+    width: 100%;
+    margin: 0;
+    border-radius: var(--radius-small);
+  }
+
+  .search-container {
+    width: 100%;
+    padding: 0 10px;
+  }
+}
+
 /* Reset button styling */
 .reset-button {
   background: none;
@@ -830,8 +904,8 @@ form#weatherForm button:hover {
 /* Add these new styles for improved weather display */
 .weather-container {
   max-width: 100%;
-  margin: 0 auto;
-  padding: 5px;
+  margin: 0;
+  padding: 0;
   overflow: hidden;
 }
 
@@ -1037,28 +1111,4 @@ form#weatherForm button:hover {
 
 .hamburger-btn:hover {
   background: var(--color-accent);
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .weather-header {
-    flex-direction: column;
-    gap: 15px;
-  }
-  
-  .primary-info {
-    flex-direction: column;
-    text-align: center;
-    gap: 20px;
-  }
-  
-  .weather-stats-grid {
-    grid-template-columns: 1fr;
-  }
-  
-  .sun-info {
-    flex-direction: column;
-    gap: 20px;
-    align-items: center;
-  }
 }
