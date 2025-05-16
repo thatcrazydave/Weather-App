@@ -30,9 +30,15 @@
           </div>
           <button type="submit" id="searchBtn">Search</button>
         </form>
+
+        <!-- Add this button after the search form -->
+        <button id="toggleRecent" class="hamburger-btn">
+          <i class="fas fa-bars"></i>
+          Recent Searches
+        </button>
         
-        <!-- Recent searches -->
-        <div class="recent-searches">
+        <!-- Wrap recent searches in a collapsible div -->
+        <div class="recent-searches" id="recentSearchesContainer">
           <h3>Recent Searches</h3>
           <ul id="recentSearches"></ul>
         </div>

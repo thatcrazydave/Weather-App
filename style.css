@@ -708,113 +708,63 @@ form#weatherForm button:hover {
 }
 
 /* Responsive styles */
-@media (max-width: 1200px) {
-  .weather-container {
-    max-width: 100%;
-    padding: 15px;
-  }
-  
-  .weather-stats-grid {
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 15px;
-  }
-}
-
 @media (max-width: 900px) {
   .weather-dashboard {
     flex-direction: column;
+    height: 100vh;
   }
   
   .sidebar {
     width: 100%;
-    max-height: auto;
+    max-height: none;
     padding: 15px;
   }
   
   .search-container {
-    max-width: 600px;
+    width: 90%;
     margin: 0 auto;
   }
   
-  .recent-searches ul {
+  .hamburger-btn {
     display: flex;
-    overflow-x: auto;
-    padding-bottom: 10px;
-    gap: 10px;
-    scrollbar-width: thin;
+    justify-content: center;
   }
   
-  .recent-searches li {
-    min-width: 150px;
-    flex-shrink: 0;
+  .recent-searches {
+    display: none;
+    margin-top: 10px;
   }
   
-  .main-content {
-    height: calc(100vh - 220px);
+  .recent-searches.active {
+    display: block;
+  }
+  
+  .recent-searches ul {
+    max-height: 200px;
     overflow-y: auto;
   }
   
-  .weather-card {
+  .main-content {
+    height: calc(100vh - var(--sidebar-height));
+    padding: 15px;
+  }
+  
+  .current-weather {
     padding: 20px;
+  }
+  
+  .forecast-section {
+    padding: 20px;
+  }
+  
+  .weather-card {
+    width: 90%;
+    margin: 0 auto 20px;
   }
   
   .city-details-panel {
     width: 100%;
-    height: 100vh;
-    top: auto;
-    bottom: -100%;
-    right: 0;
-    transform: translateY(100%);
-  }
-  
-  .city-details-panel.active {
-    bottom: 0;
-    transform: translateY(0);
-  }
-}
-
-@media (max-width: 768px) {
-  .weather-header {
-    flex-direction: column;
-    gap: 15px;
-  }
-  
-  .primary-info {
-    flex-direction: column;
-    text-align: center;
-    gap: 20px;
-  }
-  
-  .temperature-display {
-    align-items: center;
-  }
-  
-  .temp-value {
-    font-size: 56px;
-  }
-  
-  .weather-icon-large img {
-    width: 100px;
-    height: 100px;
-  }
-  
-  .forecast-items {
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-    gap: 15px;
-  }
-  
-  .air-quality-grid {
-    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-  }
-  
-  .weather-stats-grid {
-    grid-template-columns: 1fr;
-  }
-  
-  .sun-info {
-    flex-direction: column;
-    gap: 20px;
-    align-items: center;
+    right: -100%;
   }
 }
 
@@ -823,66 +773,33 @@ form#weatherForm button:hover {
     padding: 10px;
   }
   
+  .search-container,
   .weather-card {
-    padding: 15px;
-    margin-bottom: 15px;
+    width: 95%;
   }
   
-  .location-info h2 {
-    font-size: 24px;
+  .weather-main {
+    flex-direction: column;
+    gap: 20px;
+    align-items: flex-start;
   }
   
-  .weather-stats-grid {
+  .weather-details {
     grid-template-columns: 1fr;
   }
   
-  .stat-card {
-    padding: 15px;
+  .city-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+  
+  .city-actions {
+    align-self: flex-end;
   }
   
   .forecast-items {
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-    gap: 10px;
-  }
-  
-  .forecast-item {
-    padding: 10px;
-  }
-  
-  .details-btn {
-    width: 100%;
-    justify-content: center;
-  }
-  
-  .sun-info {
-    padding: 15px 0;
-  }
-}
-
-@media (max-width: 480px) {
-  .temp-value {
-    font-size: 48px;
-  }
-  
-  .weather-icon-large img {
-    width: 80px;
-    height: 80px;
-  }
-  
-  .weather-description {
-    font-size: 16px;
-  }
-  
-  .forecast-items {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  
-  .air-quality-grid {
-    grid-template-columns: 1fr;
-  }
-  
-  .panel-header h3 {
-    font-size: 16px;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
   }
 }
 
@@ -912,7 +829,7 @@ form#weatherForm button:hover {
 
 /* Add these new styles for improved weather display */
 .weather-container {
-  max-width: 900px;
+  max-width: 90%;
   margin: 0 auto;
   padding: 20px;
   overflow: hidden;
@@ -1095,6 +1012,33 @@ form#weatherForm button:hover {
   font-weight: 600;
 }
 
+/* Add hamburger menu styles */
+.hamburger-btn {
+  display: none;
+  width: 100%;
+  padding: 12px;
+  background: var(--color-secondary);
+  color: white;
+  border: none;
+  border-radius: var(--radius-small);
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  align-items: center;
+  gap: 8px;
+  margin: 10px 0;
+}
+
+.hamburger-btn i {
+  font-size: 16px;
+}
+
+.hamburger-btn:hover {
+  background: var(--color-accent);
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .weather-header {
@@ -1117,60 +1061,4 @@ form#weatherForm button:hover {
     gap: 20px;
     align-items: center;
   }
-}
-
-@media (max-width: 480px) {
-  .temp-value {
-    font-size: 48px;
-  }
-  
-  .weather-icon-large img {
-    width: 80px;
-    height: 80px;
-  }
-  
-  .weather-description {
-    font-size: 16px;
-  }
-  
-  .forecast-items {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  
-  .air-quality-grid {
-    grid-template-columns: 1fr;
-  }
-  
-  .panel-header h3 {
-    font-size: 16px;
-  }
-}
-
-/* Add touch-friendly interactions */
-@media (hover: none) {
-  .details-btn:active,
-  .stat-card:active,
-  .forecast-item:active {
-    transform: scale(0.98);
-  }
-}
-
-/* Fix iOS height issues */
-@supports (-webkit-touch-callout: none) {
-  .weather-dashboard {
-    min-height: -webkit-fill-available;
-  }
-  
-  .main-content {
-    height: -webkit-fill-available;
-  }
-}
-
-/* Improve scrolling */
-.main-content,
-.recent-searches ul,
-.city-details-panel {
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: thin;
-  scrollbar-color: var(--color-secondary) transparent;
 }
