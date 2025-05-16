@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Weather Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+<body>
+  <div class="weather-dashboard">
+    <div class="sidebar">
+      <div class="app-header">
+        <button id="resetDashboard" class="reset-button">
+          <i class="fas fa-cloud-sun"></i> Weather Dashboard
+        </button>
+      </div>
+      
+      <!-- Search form -->
+      <div class="search-container">
+        <form id="weatherForm">
+          <div class="input-group">
+            <i class="fas fa-search"></i>
+            <input
+              type="text"
+              id="cityInput"
+              placeholder="Search for a city..."
+              autocomplete="off"
+            />
+          </div>
+          <button type="submit" id="searchBtn">Search</button>
+        </form>
+        
+        <!-- Recent searches -->
+        <div class="recent-searches">
+          <h3>Recent Searches</h3>
+          <ul id="recentSearches"></ul>
+        </div>
+      </div>
+    </div>
+    
+    <div class="main-content">
+      <!-- Loading indicator -->
+      <div id="loadingIndicator" style="display: none;">
+        <div class="loader"></div>
+        <p>Fetching weather data...</p>
+      </div>
+      
+      <!-- Weather results appear here -->
+      <div id="weatherResult">
+        <div class="welcome-message">
+          <i class="fas fa-cloud-sun fa-4x"></i>
+          <h2>Welcome to Weather Dashboard</h2>
+          <p>Search for a city to see detailed weather information</p>
+        </div>
+      </div>
+      
+      <!-- City details panel (hidden by default) -->
+      <div id="cityDetails" class="city-details-panel">
+        <div class="panel-header">
+          <h3>City Information</h3>
+          <button id="closeDetailsBtn"><i class="fas fa-times"></i></button>
+        </div>
+        <div id="cityDetailsContent"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
