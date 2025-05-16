@@ -708,6 +708,18 @@ form#weatherForm button:hover {
 }
 
 /* Responsive styles */
+@media (max-width: 1200px) {
+  .weather-container {
+    max-width: 100%;
+    padding: 15px;
+  }
+  
+  .weather-stats-grid {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 15px;
+  }
+}
+
 @media (max-width: 900px) {
   .weather-dashboard {
     flex-direction: column;
@@ -715,60 +727,162 @@ form#weatherForm button:hover {
   
   .sidebar {
     width: 100%;
-    max-height: 220px;
-    padding: 20px;
+    max-height: auto;
+    padding: 15px;
   }
   
-  .app-header {
-    padding-bottom: 15px;
-    margin-bottom: 15px;
+  .search-container {
+    max-width: 600px;
+    margin: 0 auto;
   }
   
-  .recent-searches {
-    margin-top: 15px;
+  .recent-searches ul {
+    display: flex;
+    overflow-x: auto;
+    padding-bottom: 10px;
+    gap: 10px;
+    scrollbar-width: thin;
+  }
+  
+  .recent-searches li {
+    min-width: 150px;
+    flex-shrink: 0;
   }
   
   .main-content {
-    padding: 20px;
+    height: calc(100vh - 220px);
+    overflow-y: auto;
   }
   
-  .current-weather {
-    padding: 20px;
-  }
-  
-  .forecast-section {
+  .weather-card {
     padding: 20px;
   }
   
   .city-details-panel {
     width: 100%;
-    right: -100%;
+    height: 100vh;
+    top: auto;
+    bottom: -100%;
+    right: 0;
+    transform: translateY(100%);
+  }
+  
+  .city-details-panel.active {
+    bottom: 0;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .weather-header {
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .primary-info {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+  }
+  
+  .temperature-display {
+    align-items: center;
+  }
+  
+  .temp-value {
+    font-size: 56px;
+  }
+  
+  .weather-icon-large img {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .forecast-items {
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 15px;
+  }
+  
+  .air-quality-grid {
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  }
+  
+  .weather-stats-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .sun-info {
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
   }
 }
 
 @media (max-width: 600px) {
-  .weather-main {
-    flex-direction: column;
-    gap: 20px;
-    align-items: flex-start;
+  .sidebar {
+    padding: 10px;
   }
   
-  .weather-details {
+  .weather-card {
+    padding: 15px;
+    margin-bottom: 15px;
+  }
+  
+  .location-info h2 {
+    font-size: 24px;
+  }
+  
+  .weather-stats-grid {
     grid-template-columns: 1fr;
   }
   
-  .city-header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 15px;
-  }
-  
-  .city-actions {
-    align-self: flex-end;
+  .stat-card {
+    padding: 15px;
   }
   
   .forecast-items {
-    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 10px;
+  }
+  
+  .forecast-item {
+    padding: 10px;
+  }
+  
+  .details-btn {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .sun-info {
+    padding: 15px 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .temp-value {
+    font-size: 48px;
+  }
+  
+  .weather-icon-large img {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .weather-description {
+    font-size: 16px;
+  }
+  
+  .forecast-items {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .air-quality-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .panel-header h3 {
+    font-size: 16px;
   }
 }
 
@@ -1003,4 +1117,60 @@ form#weatherForm button:hover {
     gap: 20px;
     align-items: center;
   }
+}
+
+@media (max-width: 480px) {
+  .temp-value {
+    font-size: 48px;
+  }
+  
+  .weather-icon-large img {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .weather-description {
+    font-size: 16px;
+  }
+  
+  .forecast-items {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .air-quality-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .panel-header h3 {
+    font-size: 16px;
+  }
+}
+
+/* Add touch-friendly interactions */
+@media (hover: none) {
+  .details-btn:active,
+  .stat-card:active,
+  .forecast-item:active {
+    transform: scale(0.98);
+  }
+}
+
+/* Fix iOS height issues */
+@supports (-webkit-touch-callout: none) {
+  .weather-dashboard {
+    min-height: -webkit-fill-available;
+  }
+  
+  .main-content {
+    height: -webkit-fill-available;
+  }
+}
+
+/* Improve scrolling */
+.main-content,
+.recent-searches ul,
+.city-details-panel {
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-secondary) transparent;
 }
