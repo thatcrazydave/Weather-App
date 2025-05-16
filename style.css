@@ -803,7 +803,7 @@ form#weatherForm button:hover {
   .weather-card {
     width: 100%;
     margin: 0 0 15px 0;
-    padding: 15px;
+    padding: 5px;
     border-radius: var(--radius-medium);
   }
   
@@ -940,24 +940,6 @@ form#weatherForm button:hover {
 .weather-time {
   font-size: 14px;
   color: var(--color-text-light);
-}
-
-.details-btn {
-  padding: 10px 20px;
-  background: var(--color-secondary);
-  color: white;
-  border: none;
-  border-radius: var(--radius-small);
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  transition: var(--transition);
-}
-
-.details-btn:hover {
-  background: var(--color-accent);
-  transform: translateY(-2px);
 }
 
 .weather-body {

@@ -25,7 +25,6 @@ const elements = {
   mainContent: document.querySelector(".main-content"),
   recentSearchesList: document.getElementById("recentSearches"),
   resetButton: document.getElementById("resetDashboard"),
-  detailsBtn: null, // Will be set dynamically
   toggleRecent: document.getElementById('toggleRecent'),
   recentSearchesContainer: document.getElementById('recentSearchesContainer'),
 };
@@ -142,11 +141,6 @@ function showWeather(data) {
             <h2>${data.name}, ${data.sys.country}</h2>
             <span class="weather-time">${formatLocalTime(data.timezone)}</span>
           </div>
-          <button class="details-btn" id="viewDetailsBtn">
-            <i class="fas fa-info-circle"></i>
-            <span>View Details</span>
-            <div class="button-loader"></div>
-          </button>
         </div>
         
         <div class="weather-body">
@@ -218,30 +212,6 @@ function showWeather(data) {
   `;
   
   elements.weatherResult.innerHTML = weatherHTML;
-  
-  // Set up details button after rendering
-  elements.detailsBtn = document.getElementById('viewDetailsBtn');
-  elements.detailsBtn.addEventListener('click', async () => {
-    const btn = elements.detailsBtn;
-    
-    // Prevent multiple clicks
-    if (btn.classList.contains('loading')) return;
-    
-    // Add loading state
-    btn.classList.add('loading');
-    btn.querySelector('span').textContent = 'Loading...';
-    
-    await showCityDetails(data.name);
-    
-    // Reset button state
-    btn.classList.remove('loading');
-    btn.querySelector('span').textContent = 'View Details';
-    
-    // Smooth scroll to details panel on mobile
-    if (window.innerWidth < 768) {
-      elements.cityDetails.scrollIntoView({ behavior: 'smooth' });
-    }
-  });
   
   localStorage.setItem("lastCity", data.name);
 }
